@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>加载更多</title>
+    <style>
+        body {
+            background-color: beige;
+        }
+
+        #main {
+            width: 100%;
+        }
+
+        aside {
+            width: 14%;
+            height: 100%;
+            display: block;
+            white-space: pre-wrap;
+            float: left;
+        }
+
+        article {
+            width: 72%;
+            height: 100%;
+            word-break: break-all;
+
+            color: #262626;
+            background: #fff;
+            display: block;
+            float: left;
+        }
+
+        p {
+            font-family: Times;
+            white-space: pre-wrap;
+            text-align: left;
+        {#line-height: 40px;#}{#font-size: 20px;#}
+        }
+
+        a {
+            font-size: 14px;
+            line-height: 20px;
+            white-space: pre-wrap;
+            text-decoration: none;
+            color:cadetblue;
+        }
+
+        a:hover {
+            color: crimson;
+        }
+
+        table {
+            border: 0px;
+            line-grid: unset;
+
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="main">
+    <aside>    </aside>
+
+    <article>
+        <p>
+        <table cellpadding="0" cellspacing="0">
+            {#        {% for item in fic_dir %}#}
+            {#           #}
+            {#            {% if loop.index %5 ==0 %}#}
+            {#                <tr>#}
+            {#                    <td><a href="/book/fictions_content/{{ fic_dir.index(item) }}">{{ item }}</a></td>#}
+            {##}
+            {#                    {% else %}#}
+            {#                    <td><a href="/book/fictions_content/{{ fic_dir.index(item) }}">{{ item }}</a></td>#}
+            {#                </tr>#}
+            {#            {% endif %}#}
+            {#            {% endfor %}#}
+
+
+            {% for item in t_list2 %}
+                <tr>
+                    {% if loop.index == t_list2|length %}
+                        {% for each in t_list2[-1] %}
+                            <td><a href="/book/fictions_content/{{ fic_dir.index(each) }}">{{ each }}</a></td>
+                        {% endfor %}
+                    {% else %}
+                        <td><a href="/book/fictions_content/{{ fic_dir.index(item[0]) }}">{{ item[0] }}</a></td>
+                        <td><a href="/book/fictions_content/{{ fic_dir.index(item[1]) }}">{{ item[1] }}</a></td>
+                        <td><a href="/book/fictions_content/{{ fic_dir.index(item[2]) }}">{{ item[2] }}</a></td>
+
+                    {% endif %}
+                </tr>
+            {% endfor %}
+
+
+        </table>
+        </p>
+    </article>
+</div>
+
+
+<button id="load">more</button>
+<div id="photos"></div>
+<script src="../js/jquery.min.js"></script>
+<script>
+    /*
+        $(()=>{
+            const url = 'http://api.tianapi.com/txapi/pet/?key=9b0c6d27384a3bbf9911ca2dfbd0e953&page='
+            var page=0
+            $('#load').on('click',(evt)=>{
+                page+=1
+                $.getJSON(url+page,(json)=>{
+                    alert(json.newslist)
+                    json.newslist.forEach((mm)=>{
+                        $('#photos').prepend($('<img>').attr('src',mm.coverURL).attr('width',200))
+                    })
+                })
+            })
+        })
+        */
+    //相比于上一种,这种可针对浏览器返回的非json对象,更为强大
+    const url = 'http://api.tianapi.com/txapi/pet/'
+    var page = 0
+    $('#load').on('click', (evt) => {
+        page += 1
+        let data = {'key': '9b0c6d27384a3bbf9911ca2dfbd0e953', 'page': page}
+        $.ajax({
+            'url': url,
+            'type': 'get',
+            'data': data,
+            'datatype': 'json',
+            'header': {},
+            'success': (json) => {
+                json.newslist.forEach((mm) => {
+                    $($('#photos').prepend($('<img>').attr('src', mm.coverURL).attr('width', 200)))
+                })
+            },
+            'error': (error) => {
+            }
+        })
+    })
+
+
+    /*
+        (() => {
+            const url = 'http://api.tianapi.com/txapi/pet/?key=9b0c6d27384a3bbf9911ca2dfbd0e953'
+            const photos = document.querySelector('#photos')
+            const loadBtn = document.querySelector('#load')
+            loadBtn.addEventListener('click', (evt) => {
+                //创建异步请求对象
+                let xhr = new XMLHttpRequest()
+                //open第一个参数是请求类型，第二个是url，第三个是ture
+                xhr.open('get', url, true)
+                //绑定事件回调函数，在收到服务器返回的数据后要对页面进行局部刷新
+                xhr.addEventListener('readystatechange', () => {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        //将返回的json字符串解析成js对象
+                        let json = JSON.parse(xhr.responseText)
+                        json.newslist.forEach((mm) => {
+                            let img = document.createElement('img')
+                            img.src = mm.coverURL
+                            img.width = 300
+                            photos.insertBefore(img, photos.firstElementChild)
+                        })
+                    }
+                })
+            })
+        })
+    */
+</script>
+
+
+</body>
+</html>

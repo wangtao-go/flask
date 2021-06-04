@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <style>
+        .error{
+            color: red;
+             text-align: center;
+        }
+    </style>
+</head>
+<body>
+<form action="" method="post">
+<label for="">姓名</label><input type="text" name="name">
+<label for="">密码</label><input type="text" name="password">
+    <button>submit</button>
+</form>
+{#<!{{ |过滤器 }}>#}
+<p class="error">
+    {{ "&lt;h3&gt;very good &lt;/h3&gt;"}}
+    {{ message|capitalize |reverse}}
+    {{ money|moneyfmt }}
+    <br>
+    {{ da }}
+</p>
+</body>
+</html>

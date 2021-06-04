@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {#    <script src="js/vue.min.js"></script>#}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    {#    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>#}
+    {#    <script src="js/banks.js"></script>#}
+
+{% endblock %}
+
+{#cdn.bootcss.com/vue#}
+{% block content %}
+
+
+    <div id="app">
+        -------->
+        {{ messgae }}
+    </div>
+
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'hello world'
+            }
+
+        })
+
+    </script>
+
+    <div id="bank-app">
+        <table width="600">
+            <thead>
+            <tr>
+                <th>b_id</th>
+                <th>username</th>
+                <th>b_name</th>
+                <th>password</th>
+            </tr>
+            </thead>
+            <tboby>
+                {% for item in banks %}
+                <tr>
+                    <td>{{ item.b_id }}</td>
+                    <td>{{ item.b_user_num }}</td>
+                    <td>{{ item.b_name }}</td>
+                    <td>{{ item.password }}</td>
+                </tr>
+                {% endfor %}
+
+                {#                <tr>#}
+                {#                    <td>{{ banks[0].b_id }}</td>#}
+                {#                    <td>{{ banks[0].username }}</td>#}
+                {#                    <td>{{ banks[0].b_name }}</td>#}
+                {#                    <td>{{ banks[0].password }}</td>#}
+                {#                </tr>#}
+                {##}
+                {#                <tr v-for="item in banks">#}
+                {##}
+                {#                    <td>{{ item.b_id }}</td>#}
+                {#                    <td>{{ item.b_user_num }}</td>#}
+                {#                    <td>{{ item.b_name }}</td>#}
+                {#                    <td>{{ item.password }}</td>#}
+                {#                </tr>#}
+
+            </tboby>
+        </table>
+
+
+    <table width="600" class="card">
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>number</th>
+                <th>money</th>
+                <th>password</th>
+                <th>user_id</th>
+                <th>bank_id</th>
+            </tr>
+            </thead>
+            <tboby>
+                {% for item in card %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ item.number }}</td>
+                    <td>{{ item.money }}</td>
+                    <td>{{ item.passwd }}</td>
+                <td>{{ item.user_id }}</td>
+                <td>{{ item.bank_id }}</td>
+                </tr>
+                {% endfor %}
+            </tboby>
+        </table>
+    </div>
+
+{% endblock %}
+
+

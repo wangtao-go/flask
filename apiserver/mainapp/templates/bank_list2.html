@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bank</title>
+</head>
+<body>
+
+
+{#    <script src="js/vue.min.js"></script>#}
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+{#    <script src="https://cdn.bootcss.com/vue/2.6.10/vue.min.js"></script>#}
+{#    <script src="js/banks.js"></script>#}
+
+{#cdn.bootcss.com/vue#}
+
+
+<div id="app">
+    -------->
+    {{ message }}
+</div>
+
+<script>
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'hello world'
+        }
+    })
+
+</script>
+
+<div id="bank-app">
+
+
+    <table width="600">
+        <thead>
+        <tr>
+            <th>b_id</th>
+            <th>username</th>
+            <th>b_name</th>
+            <th>password</th>
+        </tr>
+        </thead>
+        <tboby>
+            {#                <tr>#}
+            {#                    <td>{{ banks[0].b_id }}</td>#}
+            {#                    <td>{{ banks[0].username }}</td>#}
+            {#                    <td>{{ banks[0].b_name }}</td>#}
+            {#                    <td>{{ banks[0].password }}</td>#}
+            {#                </tr>#}
+            {##}
+            {#                <tr v-for="item in banks">#}
+            {##}
+            {#                    <td>{{ item.b_id }}</td>#}
+            {#                    <td>{{ item.b_user_num }}</td>#}
+            {#                    <td>{{ item.b_name }}</td>#}
+            {#                    <td>{{ item.password }}</td>#}
+            {#                </tr>#}
+
+        </tboby>
+    </table>
+</div>
+
+</body>
+</html>

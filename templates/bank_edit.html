@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<!已经不是静态页面，而是模版文件了，存在动态显示的变量，需要在视图函数中，指定数据渲染模版，渲染之后的html内容才是静态资源>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}的页面</title>
+</head>
+<body>
+    <h2>{{ title }}的页面</h2>
+
+    <form  method="post" > <!action规定了form前往设定路由指定的处理函数, 甚至可以不写，默认为重定向函数路由，method要写>
+        <label >bank</label>
+        <input type="text" name="name"><br>
+        <label >card</label>
+        <input type="text" name="card_num">
+        <button >提交</button>
+    </form>
+
+<div class="error">
+    <span>{{ error_message }}</span>
+</div>
+</body>
+</html>
+
+
+

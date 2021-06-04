@@ -1,0 +1,34 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login_success</title>
+    <style>
+        p{
+            color: red;
+            text-align:left;
+        }
+    </style>
+</head>
+<body>
+<p>cookies:{{ request.cookies }}</p>
+<p>url:{{ request.url }}</p>
+<p>session:{{ b_name }}</p>
+<p id="clock">time:{{ b_time }}</p>
+</body>
+{#<script>#}
+{#    const clock_time=document.getElementById('clock')#}
+{#    function showtime(){#}
+{#        clock_time.textContent=clock_time.textContent#}
+{#    }#}
+{#    window.setInterval(showtime,1000)#}
+{#</script>#}
+
+</html>
+
+
+
+
+

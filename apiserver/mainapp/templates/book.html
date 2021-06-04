@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>relate</title>
+    <style>
+        .warning {
+            color: red;
+            font-size: 20px;
+        }
+        .even{
+            color:yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<form action="" method="post">
+    <table>
+        <tr>
+            <td>author</td>
+            <td><input type="text" name="author"></td>
+        </tr>
+        <tr>
+            <td>book</td>
+            <td><input type="text" name="book"></td>
+        </tr>
+        <tr>
+            <td>type</td>
+            <td><input type="text" name="type"></td>
+        </tr>
+        <tr>
+            <td>year</td>
+            <td><input type="text" name="year"></td>
+        </tr>
+{#        author<input type="text" name="author"><br>#}
+{#        book<input type="text" name="book"><br>#}
+{#        type<input type="text" name="type"><br>#}
+{#        year<input type="text" name="year"><br>#}
+    </table>
+    <tr><button>提交</button></tr>
+
+    {#    id<input type="text" name="id"><br>#}
+
+
+</form>
+
+<p class="warning">{{ success }}</p>
+<p class="warning">{{ message }}</p>
+
+
+<table>
+    <thead>
+    <tr>
+        <td>书名</td>
+        <td>作者</td>
+        <td>类型</td>
+        <td>年份</td>
+        <td>编辑</td>
+    </tr>
+    </thead>
+
+    <tbody>
+    {% for item in book %}
+        <tr {% if loop.index %2==0 %} class="even" {% endif %}>
+            <td>{{ item.name }}</td>
+            <td>{{ item.author }}</td>
+            <td>{{ item.type }}</td>
+            <td>{{ item.publish_year }}</td>
+            <td><a class="btn" href="/book_del">删除</a></td>
+        </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+
+</body>
+
+
+</html>
+
+
+
+
+
+
+
+
+
+
